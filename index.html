@@ -1,0 +1,1298 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dario Ossa — Senior Android Engineer (Kotlin, Jetpack Compose)</title>
+<meta name="description" content="Senior Android Engineer. Kotlin, Jetpack Compose, responsable único de una librería de autenticación compartida por cuatro aplicaciones, y resolución de problemas en producción. Santiago de Chile.">
+<meta name="author" content="Dario Ossa">
+<meta property="og:type" content="profile"><meta property="og:title" content="Dario Ossa — Senior Android Engineer">
+<meta property="og:description" content="Senior Android Engineer. Kotlin, Jetpack Compose, responsable único de una librería de autenticación compartida por cuatro aplicaciones, y resolución de problemas en producción. Santiago de Chile.">
+<meta property="og:url" content="https://DOssaA.github.io/"><meta property="og:image" content="https://DOssaA.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://DOssaA.github.io/">
+<link rel="alternate" hreflang="es" href="https://DOssaA.github.io/">
+<link rel="alternate" hreflang="en" href="https://DOssaA.github.io/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://DOssaA.github.io/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Dario Ossa","jobTitle":"Senior Android Engineer","url":"https://DOssaA.github.io/","email":"mailto:dario.ossa.a@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Santiago","addressCountry":"CL"},"knowsAbout":["Android","Kotlin","Jetpack Compose","Kotlin Multiplatform","Mobile Architecture","OAuth","JWT","ExoPlayer","MediaSession","Media playback","Offline-first"],"sameAs":["https://github.com/DOssaA","https://www.linkedin.com/in/darioossa/"]}
+</script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased}
+img{max-width:100%}[hidden]{display:none!important}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+p{margin:0 0 1rem}p:last-child{margin-bottom:0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:1.25rem;padding-block:0 5rem}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);display:flex;align-items:center;gap:1rem;padding:.5rem 1.25rem;
+  font-family:var(--mono);font-size:.72rem}
+.bar .id{font-weight:500;color:var(--fg)}.bar .id b{color:var(--acc);font-weight:500}
+.bar .nav{display:none;gap:1rem;margin-left:auto}
+@media(min-width:900px){.bar .nav{display:flex}}
+.bar .nav a{color:var(--fg3);text-decoration:none}
+.bar .nav a:hover{color:var(--fg)}.bar .nav a[aria-current]{color:var(--acc)}
+.bar .tools{margin-left:auto;display:flex;gap:.4rem}
+@media(min-width:900px){.bar .tools{margin-left:0}}
+.tbtn{background:transparent;border:1px solid var(--ctrl);color:var(--fg2);border-radius:var(--r);
+  font-family:var(--mono);font-size:.7rem;padding:.24rem .5rem;cursor:pointer}
+.tbtn:hover{border-color:var(--acc);color:var(--acc)}
+.hero{padding-block:3.4rem 0}
+.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--fg3);margin:0 0 1rem}
+.lede b{color:var(--fg);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.7rem;font-family:var(--mono);font-size:.72rem}
+.chips span{border:1px solid var(--ctrl);border-radius:var(--r);padding:.22rem .5rem;color:var(--fg2)}
+.chips span:first-child{border-color:var(--add);color:var(--add);background:var(--add-s)}
+.acts{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:3.2rem}
+.btn{font-family:var(--mono);font-size:.76rem;border:1px solid var(--ctrl);background:var(--panel);
+  color:var(--fg);border-radius:var(--r);padding:.5rem .85rem;cursor:pointer;display:inline-flex;gap:.4rem;text-decoration:none}
+.btn:hover{border-color:var(--acc);color:var(--acc)}
+.btn.p{background:var(--acc);border-color:var(--acc);color:var(--onacc);font-weight:600}
+.btn.p:hover{color:var(--onacc);filter:brightness(1.08)}
+.note{border:1px solid var(--line);background:var(--panel);padding:1.3rem 1.5rem;margin-bottom:3.4rem;max-width:40em;border-radius:var(--r)}
+.note h2{font-family:var(--mono);font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;color:var(--fg3);margin:0 0 .8rem;border:0;padding:0;display:block}
+.note p{margin:0 0 .75rem;color:var(--fg2)}.note p:last-child{margin:0}.note b{color:var(--fg)}
+section{padding-block:0 3.6rem;scroll-margin-top:4.5rem}
+h2{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--fg3);margin:0 0 1.4rem;padding-bottom:.6rem;border-bottom:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+h2 em{font-style:normal;color:var(--fg3);opacity:.85}
+.grade{font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;
+  padding:.1rem .4rem;border-radius:var(--r);white-space:nowrap;display:inline-block;font-weight:500}
+.gv{background:var(--add-s);color:var(--add)}.gr{background:var(--mod-s);color:var(--mod)}.gl{background:var(--panel2);color:var(--fg3)}
+.legend{display:flex;flex-wrap:wrap;gap:1.1rem;margin-bottom:2rem;font-family:var(--mono);font-size:.7rem;color:var(--fg3)}
+.legend div{display:flex;gap:.45rem;align-items:center}
+.lvl{display:grid;gap:1rem}
+@media(min-width:760px){.lvl{grid-template-columns:repeat(3,1fr)}}
+.jd{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1.2rem 1.3rem}
+.jd .who{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--add);background:var(--add-s);display:inline-block;padding:.14rem .45rem;border-radius:var(--r);margin:0 0 .7rem}
+.jd p{color:var(--fg2)}
+.jd .when{margin-top:.9rem;padding-top:.75rem;border-top:1px dashed var(--line2);font-family:var(--mono);
+  font-size:.7rem;color:var(--fg3);font-variant-numeric:tabular-nums;display:flex;justify-content:space-between;gap:.7rem;flex-wrap:wrap;align-items:center}
+.rmeta{display:flex;flex-wrap:wrap;font-family:var(--mono);font-size:.7rem;color:var(--fg3);margin:0;gap:.3rem .8rem}
+.rtag{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--acc);
+  background:var(--acc-s);padding:.14rem .45rem;border-radius:var(--r);margin:0 0 .55rem}
+.flds{display:grid;gap:1rem}
+@media(min-width:680px){.flds{grid-template-columns:8.4rem minmax(0,1fr);gap:1rem 1.4rem;align-items:baseline}}
+.fl{font-family:var(--mono);font-size:.67rem;letter-spacing:.09em;text-transform:uppercase;color:var(--fg3);padding-top:.3rem}
+@media(max-width:679px){.fl{margin-bottom:-.8rem}}
+.fb{color:var(--fg2);min-width:0}.fb b{color:var(--fg);font-weight:600}
+.fb.lim{color:var(--fg3);font-size:.95em}
+.ops{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.ops li{display:grid;grid-template-columns:1.5rem 1fr;gap:.5rem;align-items:baseline;padding:.55rem .6rem;border-bottom:1px solid var(--line)}
+.ops li:last-child{border-bottom:0}
+.ops li.add{background:var(--add-s)}.ops li.mod{background:var(--mod-s)}
+.ops .op{text-align:center;font-weight:700;font-family:var(--mono);font-size:.84rem}
+.ops li.add .op{color:var(--add)}.ops li.mod .op{color:var(--mod)}
+.ops .tx{color:var(--fg2)}.ops .tx b{color:var(--fg);font-weight:600}
+.tracebox{border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.1rem;overflow-x:auto;background:var(--bg)}
+.tracebox .tbh{font-family:var(--mono);font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);margin:0 0 .2rem;font-weight:500}
+.tracebox .tn2{font-size:.8rem;color:var(--fg3);margin:0 0 .85rem;font-family:var(--mono)}
+svg.trace{display:block;width:100%;min-width:560px;height:auto}
+svg.trace .grid line{stroke:var(--line);stroke-width:1}
+svg.trace .b1{fill:var(--mod-s);stroke:var(--mod);stroke-width:1}
+svg.trace .b2{fill:var(--add-s);stroke:var(--add);stroke-width:1}
+svg.trace .b3{fill:none;stroke:var(--line2);stroke-width:1;stroke-dasharray:3 3}
+svg.trace .rlab{font-family:var(--mono);font-size:8px;letter-spacing:.08em;fill:var(--fg3)}
+svg.trace .blab{font-family:var(--mono);font-size:8.5px;fill:var(--fg2)}
+svg.trace .blab.dim{fill:var(--fg3)}
+svg.trace .crit{stroke:var(--acc);stroke-width:1.5;stroke-dasharray:4 3}
+svg.trace .clab{font-family:var(--mono);font-size:9px;fill:var(--acc)}
+svg.trace .foot{font-family:var(--mono);font-size:9px;fill:var(--fg3)}
+.items{display:flex;flex-direction:column;gap:1.4rem}
+.item{border-left:3px solid var(--line2);padding-left:1.1rem}
+.item.v{border-left-color:var(--add)}
+.sub{font-family:var(--mono);font-size:.7rem;color:var(--fg3);display:flex;flex-wrap:wrap;gap:.35rem .8rem;align-items:center;margin:0 0 .5rem}
+.sub a{color:var(--acc)}
+.item p{color:var(--fg2);margin:0 0 .5rem;max-width:44em}
+.item .lim{font-size:.93em;color:var(--fg3)}
+.tiers{display:flex;flex-direction:column;gap:1.35rem}
+.tn{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);
+  margin:0 0 .55rem;display:flex;gap:.6rem;align-items:baseline;flex-wrap:wrap}
+.tn em{font-style:normal;text-transform:none;letter-spacing:0;color:var(--fg3);opacity:.9;font-size:.95em}
+.tc{display:flex;flex-wrap:wrap;gap:.32rem}
+.tc span{font-family:var(--mono);font-size:.73rem;border:1px solid var(--line);background:var(--panel);
+  border-radius:var(--r);padding:.18rem .45rem;color:var(--fg2)}
+.t-deep .tc span{border-color:var(--acc);color:var(--acc);background:var(--acc-s)}
+.t-none .tc span{border-style:dashed;color:var(--fg3);background:transparent;text-decoration:line-through;text-decoration-color:var(--line2)}
+.prose{max-width:37em}.prose p{color:var(--fg2)}.prose p b{color:var(--fg);font-weight:600}
+.contact{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:1.7rem}
+.contact p{color:var(--fg2);max-width:35em}
+.tz{font-family:var(--mono);font-size:.72rem;color:var(--fg3);margin-top:1.1rem;padding-top:.9rem;border-top:1px dashed var(--line2)}
+.plain{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.85rem;max-width:38em}
+.plain li{display:grid;gap:.1rem;color:var(--fg2)}
+.plain .k{font-family:var(--mono);font-size:.67rem;letter-spacing:.09em;text-transform:uppercase;color:var(--fg3)}
+footer{border-top:1px solid var(--line);margin-top:1rem;padding-top:1.2rem;font-family:var(--mono);
+  font-size:.69rem;color:var(--fg3);display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between}
+.sumlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel)}
+.sumlist li{display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:baseline;
+  padding:.7rem .85rem;border-bottom:1px solid var(--line);color:var(--fg2)}
+.sumlist li:last-child{border-bottom:0}
+.sumlist li.is-lim{color:var(--fg3)}
+ol.track{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-direction:column;gap:0;
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel)}
+ol.track li{display:grid;gap:.1rem .9rem;padding:.7rem .9rem;border-bottom:1px solid var(--line);align-items:baseline}
+ol.track li:last-child{border-bottom:0}
+@media(min-width:620px){ol.track li{grid-template-columns:15rem 1fr auto}}
+ol.track .org{color:var(--fg);font-weight:600}
+ol.track .rl{color:var(--fg2)}
+ol.track .wh{font-family:var(--mono);font-size:.72rem;color:var(--fg3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tracknote{font-size:.95em;color:var(--fg3);max-width:44em}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+:root{
+  --maxw:960px; --r:2px;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --bg:#0C0E11;--panel:#13161B;--panel2:#1A1E25;--line:#242A33;--line2:#39404C;
+  --fg:#E8ECF1;--fg2:#B3BCC8;--fg3:#8F99A7;
+  --acc:#B9F227;--acc-s:#1E2A08;--onacc:#0C0E11;--ctrl:#616D82;
+  --add:#5FE08F;--add-s:#0E2D1B;--mod:#F0B95C;--mod-s:#2E2210;
+}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){
+  --bg:#F3F5F4;--panel:#FFFFFF;--panel2:#E8ECEA;--line:#D5DBD8;--line2:#B3BCB7;
+  --fg:#0F1311;--fg2:#434A45;--fg3:#646C67;
+  --acc:#456300;--acc-s:#EAF3D3;--onacc:#FFFFFF;--ctrl:#77867E;
+  --add:#1C6B42;--add-s:#DFF0E6;--mod:#71490A;--mod-s:#F6EBD6;
+}}
+:root[data-theme="light"]{
+  --bg:#F3F5F4;--panel:#FFFFFF;--panel2:#E8ECEA;--line:#D5DBD8;--line2:#B3BCB7;
+  --fg:#0F1311;--fg2:#434A45;--fg3:#646C67;
+  --acc:#456300;--acc-s:#EAF3D3;--onacc:#FFFFFF;--ctrl:#77867E;
+  --add:#1C6B42;--add-s:#DFF0E6;--mod:#71490A;--mod-s:#F6EBD6;
+}
+html{color-scheme:dark light}html[data-theme="light"]{color-scheme:light}
+body{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.6}
+a{color:var(--acc);text-decoration:none;border-bottom:1px solid transparent}
+a:hover{border-bottom-color:var(--acc)}
+code{font-family:var(--mono);font-size:.88em;color:var(--fg)}
+h1{font-family:Saira,system-ui,sans-serif;font-weight:800;font-size:clamp(2.6rem,8.5vw,4.6rem);
+  line-height:.94;letter-spacing:-.022em;margin:0 0 .35rem;text-transform:uppercase;text-wrap:balance}
+.rolel{font-family:var(--mono);font-size:clamp(.78rem,2.2vw,.92rem);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--acc);margin:0 0 1.5rem}
+.lede{font-size:1.1rem;max-width:33em;color:var(--fg2);margin:0 0 1.6rem}
+h3{font-family:Saira,system-ui,sans-serif;font-weight:700;font-size:1.3rem;line-height:1.16;
+  letter-spacing:-.008em;margin:0 0 .45rem;text-wrap:balance}
+.jd h3{font-size:1.05rem}.item h3{font-size:1.05rem}
+h2{border-bottom:1px solid var(--line2)}
+h2 .ix{color:var(--acc);margin-right:.5rem}
+/* marcas de esquina tipo HUD en el resumen */
+.hud{position:relative;padding:1.15rem;border:1px solid var(--line2);background:var(--panel)}
+.hud::before,.hud::after{content:"";position:absolute;width:11px;height:11px;border:2px solid var(--acc)}
+.hud::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.hud::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.sumlist{border:0;background:transparent}
+.sumlist li{border-bottom:1px dotted var(--line2);padding:.62rem 0}
+.sumlist li:last-child{border-bottom:0}
+details.rec{margin-bottom:.7rem;border:1px solid var(--line);background:var(--panel);border-radius:var(--r)}
+details.rec[open]{border-color:var(--line2)}
+details.rec>summary{list-style:none;cursor:pointer;padding:1rem 1.15rem;display:grid;gap:.4rem}
+details.rec>summary::-webkit-details-marker{display:none}
+details.rec>summary:hover h3{color:var(--acc)}
+details.rec>summary{display:grid;grid-template-columns:1fr auto;gap:.15rem .9rem;align-items:baseline}
+details.rec>summary>h3{grid-column:1}
+details.rec>summary>.chev{grid-column:2;grid-row:1;justify-self:end}
+details.rec>summary>.rtag,details.rec>summary>.rmeta{grid-column:1/-1}
+@media(max-width:560px){details.rec>summary{grid-template-columns:1fr}
+  details.rec>summary>.chev{grid-column:1;grid-row:auto;justify-self:start}}
+.chev{font-family:var(--mono);font-size:.68rem;color:var(--acc);letter-spacing:.08em;white-space:nowrap;text-transform:uppercase}
+details.rec[open] .chev{opacity:.6}
+details.rec[open] .cv-o,details.rec:not([open]) .cv-c{display:none}
+.flds{padding:1.1rem 1.15rem 1.2rem;border-top:1px solid var(--line);margin-top:.3rem}
+.tracebox{margin:0}
+.ops li{font-size:.94rem}
+.bar .id{letter-spacing:.08em;text-transform:uppercase}
+
+@media print{
+  :root:root,:root:root[data-theme="dark"],:root:root[data-theme="light"]{--bg:#fff;--panel:#fff;--panel2:#f4f4f4;
+    --fg:#000;--fg2:#222;--fg3:#444;--line:#bbb;--line2:#999;--ctrl:#888;--onacc:#fff;
+    --acc:#333;--acc-s:#f0f0f0;--add:#1a5c36;--add-s:#eef6f1;--mod:#6a4408;--mod-s:#f7f1e4}
+  html,body{background:#fff!important;color:#000!important}
+  .bar,.tbtn{display:none!important}a[target]::after{content:" (" attr(href) ")";font-size:.75em;color:#555}
+  details.rec{break-inside:avoid}section{break-inside:auto}body{font-size:11pt}
+  .tracebox,.hud,.jd,.rec,.rhead,.contact,.note,.ops li,.tc span,.grade,.sumlist{background:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .ops li.add,.ops li.mod{background:#f6f6f6!important}
+  svg.trace{min-width:0}
+}
+</style>
+<script>
+(function(){try{
+ var q=new URLSearchParams(location.search).get("lang"),st=null;
+ try{st=localStorage.getItem("do-lang")}catch(e){}
+ var nv=(navigator.language||"en").slice(0,2).toLowerCase();
+ var l=(q==="en"||q==="es")?q:(st||(nv==="es"?"es":"en"));
+ document.documentElement.lang=l;
+ document.documentElement.setAttribute("data-boot",l);
+ var th=null;try{th=localStorage.getItem("do-theme")}catch(e){}
+ if(th){document.documentElement.setAttribute("data-theme",th)}
+}catch(e){}})();
+</script>
+<style>[data-boot="es"] #pane-en,[data-boot="en"] #pane-es{display:none!important}[data-boot="en"] #pane-en[hidden],[data-boot="es"] #pane-es[hidden]{display:block!important}</style>
+</head>
+
+<body>
+  <div id="pane-es" lang="es">
+    <div class="bar"><span class="id">DARIO OSSA <b>/</b> ANDROID <b>/</b> MOBILE </span>
+      <nav class="nav"><a href="#es-sum">Resumen</a><a href="#es-level">Nivel</a><a href="#es-track">Trayectoria</a><a
+          href="#es-work">Casos</a><a href="#es-code">Código</a><a href="#es-hist">Historial</a><a
+          href="#es-stack">Tecnologías</a><a href="#es-how">Cómo trabajo</a><a href="#es-contact">Contacto</a></nav>
+      <div class="tools"><button class="tbtn" data-langbtn type="button">EN</button><button class="tbtn" data-themebtn
+          type="button" title="Tema" aria-label="Tema">◐</button></div>
+    </div>
+    <div class="wrap">
+      <header class="hero">
+        <p class="kicker">Santiago de Chile | Latam remoto · UTC−3 (UTC−4 en invierno austral)</p>
+        <h1>Dario Ossa</h1>
+        <p class="rolel">Senior Android Engineer</p>
+        <p class="lede">Cuento con más de ocho años en desarrollo móvil, seis y medio en Android nativo con Kotlin.
+          Donde mejor puedo aportar es
+          con <b>código que ya existe</b>, que tiene que seguir funcionando mientras cambia y además tengo experiencia
+          en todo el
+          ciclo de vida.</p>
+        <div class="chips"><span>Disponible para roles Senior Android · jornada completa/parcial o
+            contrato</span><span>8+ años
+            móvil · 6+ Android nativo</span><span>Ascendido a Senior por revisión formal</span><span>Remoto · jornada
+            coincida con la costa este de EE. UU. o medio tiempo hora </span></div>
+        <div class="acts"><a class="btn p" href="mailto:dario.ossa.a@gmail.com">Escríbeme</a><button class="btn"
+            type="button" data-copy="dario.ossa.a@gmail.com" data-label-idle="Copiar correo"
+            data-label-done="Copiado">Copiar correo</button><a class="btn" href="./dario-ossa-cv.pdf">CV (PDF)</a><a
+            class="btn" href="https://github.com/DOssaA" target="_blank" rel="noopener noreferrer">GitHub</a><a
+            class="btn" href="https://www.linkedin.com/in/darioossa/" target="_blank"
+            rel="noopener noreferrer">LinkedIn</a></div>
+      </header>
+      <div class="note">
+        <h2>Cómo leer esta página</h2>
+        <p>Casi todo mi trabajo en producción está cubierto por un acuerdo de confidencialidad, por lo que no están
+          disponibles capturas de pantalla sino el razonamiento: la restricción, la decisión, lo que costó y lo que se
+          hizo y no se hizo.</p>
+      </div>
+      <div class="legend">
+        <div><span class="grade gv">◆ Comprobable</span> Hay un enlace público que puedes abrir.</div>
+        <div><span class="grade gr">● Experiencia</span> Mi relato sobre el trabajo, sin enlace público.</div>
+      </div>
+      <section id="es-sum">
+        <h2><span><span class="ix">01 </span>Resumen</span><em>Lectura de 45 segundos</em></h2>
+        <div class="hud">
+          <ul class="sumlist">
+            <li class=""><span class="grade gr">● Experiencia</span><span>Ascendido a Senior por una revisión formal de
+                logros documentados, no por antigüedad. Aprobada en octubre de 2024; título de Senior entre enero y
+                agosto de 2025.</span></li>
+            <li class=""><span class="grade gr">● Experiencia</span><span>Único desarrollador de una librería de
+                autenticación compartida por cuatro aplicaciones en producción, durante más de un año, tras recibirla
+                del líder del equipo Android.</span></li>
+            <li class=""><span class="grade gr">● Experiencia</span><span>Rehice prácticamente desde cero las pruebas de
+                punta a punta de la librería de autenticación, que llevaban meses fallando y cuyos fallos ya se daban
+                por normales.</span></li>
+            <li class=""><span class="grade gr">● Experiencia</span><span>Reduje un 33-50 % el tiempo de inicio de una
+                aplicación paralelizando la inicialización y difiriendo funcionalidad no crítica después de la primera
+                pantalla interactiva; la cifra es de Android y la midió el equipo de calidad. Los Baseline Profiles, en
+                una tarea aparte, no tuvieron efecto apreciable.</span></li>
+            <li class=""><span class="grade gr">● Experiencia</span><span>A lo largo de distintos roles resolví
+                personalmente más de 40 problemas de producción: caídas, ANR (la aplicación deja de responder por 5 o
+                más segundos) y errores
+                detectados tras publicar.</span></li>
+            <li class=""><span class="grade gr">● Experiencia</span><span>Aplicación de venta en terreno que funciona
+                sin conexión: base de datos local como fuente de verdad, envío por lotes y resolución de
+                conflictos.</span></li>
+            <li class=""><span class="grade gv">◆ Comprobable</span><span>Dos contribuciones integradas en MockK, una de
+                las librerías de simulación de objetos para tests más usadas en Kotlin.</span></li>
+            <li class=""><span class="grade gv">◆ Comprobable</span><span>Aplicación Trenggo (2017–2018): red social de
+                vídeos comparados
+                lado a lado usando ExoPlayer y YouTube Player, de cero hasta la publicación en Google Play. Queda una
+                demostración pública en
+                vídeo.</span></li>
+            <li class=""><span class="grade gr">● Experiencia</span><span>Listenia (2017–2018): audio con ExoPlayer,
+                MediaSession y controles en la notificación. Es anterior a Android 8; hoy lo mismo exigiría un servicio
+                en primer plano, que no he implementado.</span></li>
+          </ul>
+        </div>
+        <div class="tracebox" style="margin-top:1rem">
+          <p class="tbh">Orden de la inicialización, antes y después</p>
+          <p class="tn2">Esquema del cambio, no una captura de medición.</p><svg viewBox="0 0 640 176" role="img"
+            aria-labelledby="tt-es" class="trace">
+            <title id="tt-es">Orden de la inicialización, antes y después</title>
+            <desc>Esquema del cambio, no una captura de medición. Paralelización y diferido: 33-50 % medido por el
+              equipo de calidad. Baseline Profiles: sin efecto apreciable.</desc>
+            <g class="grid">
+              <line x1="52" y1="26" x2="52" y2="134" />
+              <line x1="124" y1="26" x2="124" y2="134" />
+              <line x1="196" y1="26" x2="196" y2="134" />
+              <line x1="268" y1="26" x2="268" y2="134" />
+              <line x1="340" y1="26" x2="340" y2="134" />
+              <line x1="412" y1="26" x2="412" y2="134" />
+              <line x1="484" y1="26" x2="484" y2="134" />
+              <line x1="556" y1="26" x2="556" y2="134" />
+            </g><text x="0" y="48" class="rlab">ANTES</text>
+            <rect x="52" y="32" width="128" height="26" rx="2" class="b1" /><text x="57" y="48.4"
+              class="blab">Application.onCreate</text>
+            <rect x="184" y="32" width="112" height="26" rx="2" class="b1" /><text x="189" y="48.4"
+              class="blab">dependencias</text>
+            <rect x="300" y="32" width="132" height="26" rx="2" class="b1" /><text x="305" y="48.4"
+              class="blab">analítica y config.</text>
+            <rect x="436" y="32" width="112" height="26" rx="2" class="b1" /><text x="441" y="48.4" class="blab">inic.
+              de func.</text>
+            <rect x="552" y="32" width="58" height="26" rx="2" class="b1" /><text x="0" y="104"
+              class="rlab">DESPUÉS</text>
+            <rect x="52" y="90" width="116" height="26" rx="2" class="b2" /><text x="57" y="106.4"
+              class="blab">Application.onCreate</text>
+            <rect x="172" y="90" width="100" height="26" rx="2" class="b2" /><text x="177" y="106.4" class="blab">inic.
+              crítica</text>
+            <rect x="276" y="90" width="40" height="26" rx="2" class="b2" />
+            <rect x="324" y="90" width="88" height="26" rx="2" class="b3" />
+            <rect x="416" y="90" width="84" height="26" rx="2" class="b3" />
+            <rect x="504" y="90" width="80" height="26" rx="2" class="b3" /><text x="324" y="132"
+              class="blab dim">aplazado, fuera de la ruta crítica</text>
+            <line x1="318" y1="80" x2="318" y2="122" class="crit" /><text x="52" y="152" class="clab">primer dibujado:
+              antes → después</text><text x="52" y="170" class="foot">Paralelización: 33 % medido por el equipo de
+              calidad. Baseline Profiles: sin efecto apreciable.</text>
+          </svg>
+        </div>
+      </section>
+      <section id="es-level">
+        <h2><span><span class="ix">02 </span>Nivel</span><em>Tres valoraciones externas</em></h2>
+        <div class="lvl">
+          <article class="jd">
+            <p class="who">Mi empleador</p>
+            <h3>Ascenso formal de semi-senior a Senior</h3>
+            <p>Un proceso definido: entrevista con el líder de desarrollo más la revisión de varios meses de logros
+              documentados. El criterio fue el trabajo entregado, medido en el tiempo.</p>
+            <p class="when"><span>Aprobado en octubre de 2024 · título de Senior entre enero y agosto de
+                2025</span><span class="grade gr">● Experiencia</span></p>
+          </article>
+          <article class="jd">
+            <p class="who">El líder del equipo</p>
+            <h3>Me traspasó la librería de autenticación y componentes de 4 aplicaciones en producción</h3>
+            <p>El líder del equipo Android las tenía a cargo y, antes de dejar el puesto, me traspasó la responsabilidad.
+              Fue su decisión sobre a quién dejarle un componente del que dependían cuatro aplicaciones en producción, 
+              además de varios módulos de esas 4 aplicaciones que mantuve y mejoré.
+            </p>
+            <p class="when"><span>Único desarrollador de la librería durante más de un año</span><span class="grade gr">●
+                Experiencia</span></p>
+          </article>
+          <article class="jd">
+            <p class="who">El cliente</p>
+            <h3>Reconocimiento público del Product Owner</h3>
+            <p>Por entrega fiable, en una reunión mensual de reconocimiento, delante de responsables del cliente,
+              desarrolladores, diseñadores, Product Owners de varias áreas y el equipo de calidad de ambos lados.</p>
+            <p class="when"><span>Cuatro aplicaciones del mismo cliente · unos 2,5 años</span><span class="grade gr">●
+                Experiencia</span></p>
+          </article>
+        </div>
+      </section>
+      <section id="es-track">
+        <h2><span><span class="ix">03 </span>Trayectoria</span><em>Dónde ocurrió cada cosa</em></h2>
+        <ol class="track">
+          <li><span class="org">Apply Digital</span><span class="rl">Software Engineer — Mobile L3 · nivel senior en su
+              escala interna</span><span class="wh">Santiago · ene 2025 – ago 2025</span></li>
+          <li><span class="org">Reign Design, luego Apply Digital</span><span class="rl">Android Developer</span><span
+              class="wh">Santiago · mar 2020 – ene 2025</span></li>
+          <li><span class="org">Arkanosoft</span><span class="rl">Mobile Developer</span><span class="wh">Santiago · oct
+              2018 – feb 2020</span></li>
+          <li><span class="org">Angular Diseño + Interacción</span><span class="rl">Front-End Mobile
+              Developer</span><span class="wh">Cali, Colombia · may 2017 – oct 2018</span></li>
+          <li><span class="org">Boken</span><span class="rl">Desarrollador móvil front-end junior</span><span
+              class="wh">Cali, Colombia · jul 2016 – ago 2017</span></li>
+          <li><span class="org">Universidad Icesi</span><span class="rl">Formación · Pregrado en Diseño de Medios
+              Interactivos</span><span class="wh">Cali, Colombia · 2011 – 2016</span></li>
+        </ol>
+        <p class="tracknote">Desde agosto de 2025 no tengo un empleo a tiempo completo. Lo que he hecho en ese tiempo
+          está al final de la página, en «Actualmente».</p>
+      </section>
+      <section id="es-work">
+        <h2><span><span class="ix">04 </span>Casos</span><em>Tres casos en detalle</em></h2>
+        <details class="rec" open>
+          <summary>
+            <h3>Una librería de autenticación de la que dependían cuatro aplicaciones</h3><span class="chev"><span
+                class="cv-o">Ver el caso completo</span><span class="cv-c">Ocultar el detalle</span></span><span
+              class="rtag">Único desarrollador durante más de un año</span><span class="rmeta"><span>Cuatro aplicaciones
+                Android del mismo cliente</span><span>Cliente bajo acuerdo de confidencialidad</span></span>
+          </summary>
+          <div class="flds">
+            <div class="fl">Contexto</div>
+            <div class="fb ">Cuatro aplicaciones en producción compartían una sola librería de autenticación: inicio de
+              sesión, registro con y sin redes sociales, recuperación de contraseña, verificación en dos pasos por
+              código (mensaje de texto o correo), y manejo, renovación y expiración de tokens JWT. Cada aplicación
+              consumía su propia variante, y la librería vivía en su propio repositorio con integración continua.</div>
+            <div class="fl">Cómo llegué</div>
+            <div class="fb ">El líder del equipo Android la tenía a cargo y, antes de dejar el puesto, me traspasó la
+              responsabilidad. Durante más de un año fui su <b>único desarrollador</b>: mantenimiento, funcionalidades
+              nuevas, rediseños, y el trabajo de integrarla en cada aplicación que necesitaba los cambios.</div>
+            <div class="fl">Restricción</div>
+            <div class="fb ">Cualquier cambio ahí alcanzaba a <b>cuatro aplicaciones en producción a la vez</b>. El
+              costo de equivocarse no era una pantalla rota: era que nadie pudiera entrar.</div>
+            <div class="fl">Qué encontré</div>
+            <div class="fb ">Las pruebas de punta a punta existían, pero llevaban meses —en algunos casos años— sin
+              actualizarse, y fallaban. Los fallos se habían normalizado: se generaban versiones que los toleraban,
+              aunque no toleraban los de las pruebas unitarias, porque había otras prioridades acordadas con el equipo.
+              Era deuda técnica conocida y pendiente. En la práctica <b>ya no decían nada sobre si la autenticación
+                funcionaba</b>.</div>
+            <div class="fl">Qué hice</div>
+            <div class="fb ">
+              <ul class="ops">
+                <li class="add"><span class="op">+</span><span class="tx">Rehice las pruebas de punta a punta
+                    prácticamente desde cero, cubriendo también los caminos de error, y las dejé corriendo
+                    correctamente. La cobertura se medía con JaCoCo.</span></li>
+                <li class="mod"><span class="op">~</span><span class="tx">Mantuve y evolucioné las variantes que cada
+                    aplicación consumía, con la configuración de contenido en Contentful.</span></li>
+                <li class="mod"><span class="op">~</span><span class="tx">Migré la publicación de artefactos a una
+                    versión nueva de JFrog, y actualicé varias dependencias junto con las versiones de Kotlin y de
+                    Android.</span></li>
+                <li class="add"><span class="op">+</span><span class="tx">Trabajo sobre OAuth y JWT: manejo, renovación
+                    y expiración de tokens en el cliente, ofuscación y registro de eventos sin datos sensibles.</span>
+                </li>
+                <li class="mod"><span class="op">~</span><span class="tx">Migré partes de la interfaz de producción de
+                    Views a Compose en estas aplicaciones, mientras implementaba pantallas, funcionalidades y cambios de
+                    diseño.</span></li>
+                <li class="mod"><span class="op">~</span><span class="tx">Coordiné cambios de autenticación y navegación
+                    entre tres equipos, para desbloquear publicaciones y alinear los módulos que dependían de
+                    ellos.</span></li>
+                <li class="add"><span class="op">+</span><span class="tx">Más de diez cambios críticos para el negocio
+                    en autenticación y módulos centrales, y flujos de validación que evitaban que el equipo de calidad
+                    quedara bloqueado cuando el servidor no tenía datos.</span></li>
+              </ul>
+            </div>
+            <div class="fl">Resultado</div>
+            <div class="fb ">La autenticación volvió a tener una red de seguridad real: un cambio en la librería pasó a
+              poder verificarse antes de integrarlo, en vez de descubrirse después de publicar. <span class="grade gr">●
+                Experiencia</span></div>
+            <div class="fl">Límite</div>
+            <div class="fb lim"><span class="grade gl">○</span> El repositorio tenía integración continua, pero <b>no
+                recuerdo si quedaron como requisito que bloqueara la publicación, así que no lo afirmo</b>: lo que sí
+              sostengo es que las rehice y quedaron corriendo correctamente. No soy especialista en seguridad — esto es
+              confianza al publicar y corrección funcional sobre un flujo de autenticación, no modelado de amenazas ni
+              criptografía. Coordiné entre equipos; no fui su líder formal. La migración a Compose fue por pantallas y
+              funcionalidades, <b>nunca una aplicación completa</b>.</div>
+          </div>
+        </details>
+        <details class="rec">
+          <summary>
+            <h3>Pedidos que no se pueden perder, en redes en las que no se puede confiar</h3><span class="chev"><span
+                class="cv-o">Ver el caso completo</span><span class="cv-c">Ocultar el detalle</span></span><span
+              class="rtag">Venta en terreno, varios países</span><span class="rmeta"><span>Unos 2
+                años</span><span>Cliente bajo acuerdo de confidencialidad</span></span>
+          </summary>
+          <div class="flds">
+            <div class="fl">Contexto</div>
+            <div class="fb ">Una aplicación Android de venta en terreno usada a diario por miles de vendedores en varios
+              países, buena parte en teléfonos de gama baja. Toman pedidos dentro de las tiendas, muchas veces donde no
+              hay cobertura.</div>
+            <div class="fl">Restricción</div>
+            <div class="fb ">La aplicación tenía que ser <b>completamente utilizable sin conexión</b>, y ningún pedido
+              podía perderse ni duplicarse al reconectar. Un pedido perdido es dinero perdido para una persona real que
+              ya se fue de la tienda.</div>
+            <div class="fl">Decisión</div>
+            <div class="fb ">Tratar la base de datos local <b>como la fuente de verdad, no como una caché</b>. La
+              interfaz siempre lee de local y nunca espera a la red. La sincronización corre aparte y reconcilia cuando
+              puede; trabajar nunca depende de ella.</div>
+            <div class="fl">Qué hice</div>
+            <div class="fb ">
+              <ul class="ops">
+                <li class="add"><span class="op">+</span><span class="tx">Base de datos local como origen de los datos,
+                    con sincronización diaria y actualización más inmediata en pantallas seleccionadas.</span></li>
+                <li class="add"><span class="op">+</span><span class="tx">Envío de pedidos por lotes con WorkManager
+                    cuando había conexión, con resolución de conflictos entre local y servidor, y degradación
+                    controlada.</span></li>
+                <li class="mod"><span class="op">~</span><span class="tx">Recibí la integración con un dispositivo BLE
+                    propietario y la mejoré: me familiaricé con el equipo físico, añadí registro de eventos en el
+                    dispositivo y resolví fallos de conexión y de transferencia que solo aparecían en terreno.</span>
+                </li>
+                <li class="add"><span class="op">+</span><span class="tx">Una capa de abstracción en Kotlin dentro de la
+                    aplicación, para que las funcionalidades dejaran de depender de los detalles de la conexión.</span>
+                </li>
+                <li class="mod"><span class="op">~</span><span class="tx">Migré partes de esta base de código de MVP
+                    hacia MVVM mientras entregaba tareas de funcionalidad y mantenimiento.</span></li>
+                <li class="add"><span class="op">+</span><span class="tx">Coordinación con el cliente y con el
+                    desarrollador original del dispositivo, en otro país.</span></li>
+              </ul>
+            </div>
+            <div class="fl">Resultado</div>
+            <div class="fb ">Los vendedores siguieron trabajando donde antes se quedaban bloqueados, y el equipo dejó de
+              depurar problemas de conexión dentro de la lógica de negocio. <span class="grade gr">● Experiencia</span>
+            </div>
+            <div class="fl">Límite</div>
+            <div class="fb lim"><span class="grade gl">○</span> No construí la pila BLE desde cero: recibí una
+              integración y la mejoré. Sin rol periférico ni servidor GATT. La capa de servicios y el proceso diario de
+              consolidación de datos eran del lado del servidor — los consumí, no los escribí. Sin CRDT. <b>La migración
+                de MVP a MVVM fue parcial y hecha sobre la marcha</b>, no un proyecto de migración con alcance propio.
+            </div>
+          </div>
+        </details>
+        <details class="rec">
+          <summary>
+            <h3>Tiempo de inicio: tres tareas, tres resultados distintos</h3><span class="chev"><span class="cv-o">Ver
+                el caso completo</span><span class="cv-c">Ocultar el detalle</span></span><span class="rtag">Y la que
+              más se recomendaba fue la que no sirvió</span><span class="rmeta"><span>Android e iOS, en
+                paralelo</span><span>Medición del equipo de calidad</span></span>
+          </summary>
+          <div class="flds">
+            <div class="fl">Contexto</div>
+            <div class="fb ">El problema lo planteó una responsable de producto del cliente: la aplicación tardaba
+              demasiado en abrir, y se abre decenas de veces en una jornada de trabajo. Lo abordamos entre dos, con un
+              desarrollador de iOS, para atacar lo mismo en las dos plataformas.</div>
+            <div class="fl">Decisión</div>
+            <div class="fb ">Mirar primero <b>el orden de la inicialización</b>, antes que las herramientas. Antes de
+              añadir nada, ver qué se estaba cargando al arrancar que todavía no hacía falta.</div>
+            <div class="fl">Qué hice</div>
+            <div class="fb ">
+              <ul class="ops">
+                <li class="mod"><span class="op">~</span><span class="tx"><b>Primera tarea.</b> Paralelicé la
+                    inicialización que lo permitía. El equipo de calidad midió <b>un 33 % de mejora</b> en el tiempo de
+                    inicio.</span></li>
+                <li class="mod"><span class="op">~</span><span class="tx"><b>Segunda tarea, aparte.</b> Añadimos el
+                    aplazamiento de las llamadas no críticas. Combinando ambas técnicas, <b>el lado de iOS reportó un 50
+                      %</b>.</span></li>
+                <li class="mod"><span class="op">~</span><span class="tx"><b>Tercera tarea, aparte.</b> Probé Baseline
+                    Profiles midiendo con Macrobenchmark sobre el mismo arranque. <b>Sin efecto apreciable.</b> Mantuve
+                    lo que sí funcionaba y descarté la suposición.</span></li>
+              </ul>
+            </div>
+            <div class="fl">Por qué lo cuento así</div>
+            <div class="fb ">Porque son tres tareas distintas con tres resultados distintos, y la que más se parecía a
+              «lo que se recomienda hacer» fue la que no sirvió. Separarlas es la parte útil; juntarlas en un solo
+              número sería más vistoso y menos cierto.</div>
+            <div class="fl">Fuera de esta tarea</div>
+            <div class="fb ">A lo largo de distintos roles resolví personalmente <b>más de 40 problemas de
+                producción</b>: caídas, ANR (la aplicación deja de responder) y errores detectados después de publicar.
+            </div>
+            <div class="fl">Límite</div>
+            <div class="fb lim"><span class="grade gl">○</span> El 33 % es la medición del equipo de calidad sobre
+              Android y viene de la paralelización. <b>El 50 % es el dato que reportó el lado de iOS</b> al combinar
+              ambas técnicas: no lo presento como mío ni como cifra de Android. Los Baseline Profiles no produjeron
+              ninguna de las dos mejoras. El trabajo fue compartido con un desarrollador de iOS con más recorrido en ese
+              proyecto. No me presento como especialista en rendimiento.</div>
+          </div>
+        </details>
+      </section>
+      <section id="es-code">
+        <h2><span><span class="ix">05 </span>Código que puedes leer</span><em>Comprobable</em></h2>
+        <div class="items">
+          <div class="item v">
+            <h3>MockK · PR #1508 — <code>SameInstanceMatcher</code></h3>
+            <p class="sub"><span class="grade gv">◆ Comprobable</span><span>Integrado el 15 de febrero de
+                2026</span><span>Cierra el issue #1501</span></p>
+            <p>Corregí una prueba que fallaba sin que hubiera ningún error. Al verificar una llamada a constructor con
+              un argumento simulado, MockK invocaba métodos sobre ese objeto mientras registraba, así que el conteo de
+              llamadas cambiaba entre una ejecución y otra. Añadí un comparador por identidad de referencia, de modo que
+              no se invoca nada durante el registro. Con pruebas y un ejemplo en el README.</p>
+            <p class="sub"><a href="https://github.com/mockk/mockk/pull/1508" target="_blank"
+                rel="noopener noreferrer">Abrir el cambio →</a></p>
+          </div>
+          <div class="item v">
+            <h3>MockK · PR #1513 — <code>confirmVerified</code> acotado</h3>
+            <p class="sub"><span class="grade gv">◆ Comprobable</span><span>Integrado el 4 de marzo de 2026</span></p>
+            <p><code>mockkStatic</code> acepta referencias a función, pero <code>confirmVerified</code> no lo hacía.
+              Añadí sobrecargas para <code>KFunction</code> y <code>KProperty</code> en la JVM, de forma que la
+              verificación puede acotarse a un único método o propiedad simulado de forma estática, y
+              <code>clear = true</code> limpia solo su historial sin tocar el de los demás. Con pruebas en la JVM y
+              documentación.
+            </p>
+            <p class="lim">○ Dos contribuciones integradas. No soy mantenedor de MockK.</p>
+            <p class="sub"><a href="https://github.com/mockk/mockk/pull/1513" target="_blank"
+                rel="noopener noreferrer">Abrir el cambio →</a></p>
+          </div>
+          <div class="item v">
+            <h3>openBooks — Kotlin Multiplatform y Compose Multiplatform</h3>
+            <p class="sub"><span class="grade gv">◆ Comprobable</span><span>Junio de 2026</span><span>Repositorio
+                público</span></p>
+            <p><b>Nació como una prueba técnica de tres días y lo mantengo público como muestra de trabajo.</b> La
+              arquitectura y la lógica principal viven en <code>commonMain</code>: Clean Architecture y MVVM, Ktor,
+              kotlinx.serialization, Room KMP, Koin, Navigation3, Material 3 Adaptive, Coil 3, corrutinas y StateFlow,
+              pruebas compartidas, e integración continua en GitHub Actions con detekt, ktlint, Kover, revisión de
+              dependencias y detección de secretos.</p>
+            <p class="lim">○ Solo la variante de Android está preparada para publicar. No hay publicación en producción
+              para iOS ni para web, no hay interoperabilidad profunda con Swift, y esto no es una migración a gran
+              escala.</p>
+            <p class="sub"><a href="https://github.com/DOssaA/openBooks" target="_blank" rel="noopener noreferrer">Abrir
+                el repositorio →</a></p>
+          </div>
+        </div>
+      </section>
+      <section id="es-hist">
+        <h2><span><span class="ix">06 </span>Historial</span><em>Contexto de fondo</em></h2>
+        <div class="items">
+          <div class="item v">
+            <h3>Trenggo — batallas de vídeo, de cero a Google Play</h3>
+            <p class="sub"><span class="grade gv">◆ Comprobable</span><span>2017–2018 · Angular Diseño +
+                Interacción</span></p>
+            <p>Codesarrollada con otro desarrollador Android, desde cero hasta la publicación. Los usuarios subían
+              vídeos y comparaban dos lado a lado con <b>ExoPlayer y YouTube Player</b>: animaciones, pantalla completa,
+              navegación entre vídeos, volumen, progreso, votación, listados de batallas y perfil.</p>
+            <p class="lim">○ Es de 2017–2018, con ExoPlayer anterior a Media3. Entre esta aplicación y Listenia suman
+              unos seis meses de trabajo con ExoPlayer en producción, y los presento como base práctica de reproducción
+              multimedia, no como experiencia actual con la API de hoy. La startup ya no opera: lo que queda es el vídeo
+              de demostración.</p>
+            <p class="sub"><a href="https://www.youtube.com/watch?v=9ntokJlQvyQ" target="_blank"
+                rel="noopener noreferrer">Ver la demostración →</a></p>
+          </div>
+          <div class="item">
+            <h3>Cinco aplicaciones nativas en Swift, a través de la revisión de la App Store</h3>
+            <p class="sub"><span class="grade gr">● Experiencia</span><span>2016–2018</span></p>
+            <p>Firma, envío y corrección de las observaciones del revisor hasta la aprobación. Dos en Boken y tres en
+              Angular Diseño + Interacción.</p>
+            <p class="lim">○ Es histórico. Demuestra el proceso de publicación y el trato con el revisor, no práctica
+              actual de App Store Connect ni experiencia iOS de nivel senior.</p>
+          </div>
+          <div class="item">
+            <h3>Listenia — aplicación de pódcast para Android</h3>
+            <p class="sub"><span class="grade gr">● Experiencia</span><span>~2017–2018 · publicada entonces en Google
+                Play</span></p>
+            <p>Desarrollada entre dos y publicada en Google Play. Java y MVP, audio con ExoPlayer, <b>MediaSession y
+                MediaController</b>, callbacks y manejo de estados del reproductor, reproducción en segundo plano y
+              controles multimedia en la notificación.</p>
+            <p class="lim">○ Es de 2017–2018, anterior a los límites de ejecución en segundo plano de Android 8: hoy lo
+              mismo exigiría un servicio en primer plano, que no he implementado. Desarrollada entre dos, sin monetizar,
+              sin usuarios activos, y no afirmo que siga publicada. Tampoco es experiencia actual con Media3.</p>
+          </div>
+        </div>
+      </section>
+      <section id="es-stack">
+        <h2><span><span class="ix">07 </span>Tecnologías, por profundidad real</span></h2>
+        <div class="tiers">
+          <div class="t-deep">
+            <p class="tn">Profundo<em>— trabajo diario, defendible a fondo</em></p>
+            <div class="tc"><span>Kotlin</span><span>Android SDK</span><span>Jetpack
+                Compose</span><span>Interoperabilidad Views–Compose</span><span>Corrutinas</span><span>Flow /
+                StateFlow</span><span>ViewModel</span><span>MVVM</span><span>Clean Architecture</span><span>Retrofit /
+                OkHttp</span><span>Room / SQLite</span><span>WorkManager</span><span>DataStore</span><span>Hilt / Dagger
+                /
+                Koin</span><span>JUnit</span><span>MockK</span><span>Mockito</span><span>Espresso</span><span>JaCoCo</span><span>Crashlytics</span><span>Play
+                Console</span><span>Android Vitals</span><span>R8 / ProGuard</span><span>OAuth y
+                JWT</span><span>Notificaciones push</span><span>Camera2 / CameraX</span></div>
+          </div>
+          <div class="t-mid">
+            <p class="tn">Práctico<em>— entregado, con alcance acotado</em></p>
+            <div class="tc"><span>Kotlin Multiplatform</span><span>Compose
+                Multiplatform</span><span>Ktor</span><span>kotlinx.serialization</span><span>Room
+                KMP</span><span>Turbine</span><span>Kotest</span><span>Mokkery</span><span>BLE en rol
+                central</span><span>React Native y Expo</span><span>TypeScript</span><span>GitHub
+                Actions</span><span>Bitrise</span><span>JFrog</span><span>Contentful</span><span>Macrobenchmark</span><span>GitFlow
+                y trunk-based</span><span>Product flavors</span><span>Firebase Analytics</span><span>Play Integrity
+                (endurecimiento de publicaciones)</span><span>Ofuscación y registro sin datos sensibles</span>
+                <span>ExoPlayer anterior a Media3 (2017–18)</span><span>MediaSession y
+                MediaController</span><span>YouTube Player</span><span>RxJava</span><span>Swift y envío a la App Store
+                (por un año aprox.)</span><span>Java</span><span>Xamarin.Forms</span><span>.NET Core REST
+                (CRUD)</span><span>Unity</span><span>Azure DevOps / App Center</span><span>GraphQL
+                (limitado)</span><span>Dynatrace (contacto puntual)</span><span>Baseline Profiles (medidos y descartados
+                en ese caso)</span></div>
+          </div>
+          <div class="t-none">
+            <p class="tn">Sin experiencia<em>— para no hacer perder tiempo</em></p>
+            <div class="tc"><span>Servicios en primer plano</span><span>Modo quiosco, Device Owner o gestión de
+                dispositivos</span><span>BLE en rol periférico o servidor GATT</span><span>Publicación de KMP en iOS o
+                web</span><span>Servidor en Node o NestJS</span><span>Media3 (ninguna experiencia)</span></div>
+          </div>
+        </div>
+      </section>
+      <section id="es-how">
+        <h2><span><span class="ix">08 </span>Cómo trabajo</span></h2>
+        <div class="prose">
+          <p><b>Responsabilidad en producción, no solo hasta que el código entra a la rama principal.</b> Lo que más
+            disfruto es resolver el problema luego de entenderlo lo suficiente para el negocio, y después realizar la
+            arquitectura, implementación, pruebas y revisión de comportamiento en producción. Es importante que resuelva
+            una necesidad real.</p>
+          <p><b>Asíncrono y por escrito.</b> Uno de mis trabajos de coordinación más exigente ha sido alinear cambios de
+            autenticación y navegación entre tres equipos, además de sacar adelante la integración de un dispositivo bluetooth
+            con su desarrollador original en otro país. Los dos funcionaron porque hubo comunicación, alineamiento y las 
+            decisiones quedaron documentadas. He trabajado en remoto con equipos repartidos en la misma y varias zonas horarias
+            de forma efectiva.
+          </p>
+          <p><b>Lo que necesito de un equipo.</b> Contexto de producto suficiente para resolver la necesidad real. Poder aclarar
+            y recibir recursos necesarios para entregar trabajo alineado a las necesidades reales del cliente, me importa que 
+            llegue al resultado que de verdad buscaba, que no siempre coincide con lo que pidió.</p>
+          <p><b>Herramientas de inteligencia artificial.</b> Las uso para explorar código, acelerar la implementación,
+            depurar, redactar pruebas y hacer refactorizaciones pequeñas. Reviso lo que producen y tomo decisiones técnicas
+            con criterio para la entrega del trabajo.</p>
+        </div>
+      </section>
+      <section id="es-contact">
+        <h2><span><span class="ix">09 </span>Contacto</span></h2>
+        <div class="contact">
+          <h3>Hablemos</h3>
+          <p>Disponible para roles Senior Android, jornada completa o contrato, en remoto. Si el puesto tiene una
+            migración pendiente, una base de código heredada o un problema de producción que nadie logra reproducir, es
+            exactamente donde soy más útil.</p>
+          <div class="acts" style="margin:1.3rem 0 0"><a class="btn p"
+              href="mailto:dario.ossa.a@gmail.com">dario.ossa.a@gmail.com</a><a class="btn"
+              href="https://www.linkedin.com/in/darioossa/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a
+              class="btn" href="https://github.com/DOssaA" target="_blank" rel="noopener noreferrer">GitHub</a><a
+              class="btn" href="./dario-ossa-cv.pdf">CV (PDF)</a></div>
+          <p class="tz">Santiago de Chile · UTC−3 en verano austral y UTC−4 en invierno · entre 0 y 2 horas respecto de
+            la costa este de Estados Unidos, y mi jornada se solapa con la suya de principio a fin. Con España la
+            diferencia va de 4 a 6 horas según la época del año: empezando a las 08:00 en Chile, eso son entre las 12:00
+            y las 14:00 en España, así que mi mañana cubre la tarde española completa.</p>
+        </div>
+        <div class="prose" style="margin-top:2.2rem">
+          <p class="kicker">Actualmente</p>
+          <ul class="plain">
+            <li><span class="k">Desde septiembre de 2026</span><span>Trabajo por horas como tester en Test IO: pruebas
+                funcionales y exploratorias, reproducción de incidencias y documentación con pasos, entorno y evidencia.
+                Tengo tres certificaciones de Test IO y tres de Tester Work, más una insignia de un curso de
+                ciberseguridad. Todo eso me afinó la forma de escribir informes de errores, y eso se nota en cómo le
+                puedo entregar el trabajo al equipo de calidad, además de entender mejor su trabajo de primera mano.</span></li>
+            <li><span class="k">Formación</span><span>AI Expert, de DevExpert.io — certificación
+                <code>6940210012c0917a60020cdb</code>. También estudiando fundamentos de Kotlin y del entorno de ejecución de
+                la JVM, además de diseño de sistemas.</span></li>
+            <li><span class="k">Desde mayo de 2026</span><span>Voluntario en la Cruz Roja Chilena, unas 15 a 20 horas al
+                mes, después de la certificación en primeros auxilios básicos y curso de doctrina institucional.</span></li>
+          </ul>
+        </div>
+      </section>
+      <footer><span>Actualizado el 30 de septiembre de 2026</span><span>Página estática de un solo archivo, escrita a
+          mano. Sin rastreo y sin cookies.</span></footer>
+    </div>
+  </div>
+  <div id="pane-en" lang="en" hidden>
+    <div class="bar"><span class="id">DARIO OSSA <b>/</b> ANDROID <b>/</b> MOBILE </span>
+      <nav class="nav"><a href="#en-sum">Summary</a><a href="#en-level">Level</a><a href="#en-track">Track record</a><a
+          href="#en-work">Cases</a><a href="#en-code">Code</a><a href="#en-hist">Earlier</a><a
+          href="#en-stack">Stack</a><a href="#en-how">How I work</a><a href="#en-contact">Contact</a></nav>
+      <div class="tools"><button class="tbtn" data-langbtn type="button">ES</button><button class="tbtn" data-themebtn
+          type="button" title="Theme" aria-label="Theme">◐</button></div>
+    </div>
+    <div class="wrap">
+      <header class="hero">
+        <p class="kicker">Santiago, Chile | LATAM remotely · UTC−3 (UTC−4 in the southern winter)</p>
+        <h1>Dario Ossa</h1>
+        <p class="rolel">Senior Android Engineer</p>
+        <p class="lede">Over eight years in mobile, six and a half of them in native Android with Kotlin. I'm at my best
+          in <b>code
+            that already exists</b> and has to keep working while it changes.</p>
+        <div class="chips"><span>Available for Senior Android roles · full/part-time or contract</span><span>8+ yrs
+            mobile ·
+            6+ native Android</span><span>Promoted to Senior through formal review</span><span>Remote · workday overlaps
+            US Eastern</span></div>
+        <div class="acts"><a class="btn p" href="mailto:dario.ossa.a@gmail.com">Get in touch</a><button class="btn"
+            type="button" data-copy="dario.ossa.a@gmail.com" data-label-idle="Copy email" data-label-done="Copied">Copy
+            email</button><a class="btn" href="./dario-ossa-cv.pdf">CV (PDF)</a><a class="btn"
+            href="https://github.com/DOssaA" target="_blank" rel="noopener noreferrer">GitHub</a><a class="btn"
+            href="https://www.linkedin.com/in/darioossa/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+      </header>
+      <div class="note">
+        <h2>How to read this page</h2>
+        <p>Almost all of my production work is covered by a confidentiality agreement. You won't find screenshots here.
+          What you'll find is the reasoning: the constraint, the decision, what it cost, and what I didn't do.</p>
+      </div>
+      <div class="legend">
+        <div><span class="grade gv">◆ Verifiable</span> There's a public link you can open.</div>
+        <div><span class="grade gr">● Experience</span> It happened at work. My account, no public link.</div>
+      </div>
+      <section id="en-sum">
+        <h2><span><span class="ix">01 </span>Summary</span><em>A 45-second read</em></h2>
+        <div class="hud">
+          <ul class="sumlist">
+            <li class=""><span class="grade gr">● Experience</span><span>Promoted to Senior through a formal review of
+                documented work, not on tenure. Approved October 2024; Senior title from January to August 2025.</span>
+            </li>
+            <li class=""><span class="grade gr">● Experience</span><span>Sole developer of an authentication library
+                shared by four production apps, for over a year, after the Android team lead handed it to me.</span>
+            </li>
+            <li class=""><span class="grade gr">● Experience</span><span>Rebuilt the end-to-end tests of the
+                authentication library practically from
+                scratch, after months of failures the team had learned to live with.</span></li>
+            <li class=""><span class="grade gr">● Experience</span><span>Cut one app's startup time by 33% by
+                parallelizing initialization; that figure is Android's and QA measured it. Baseline Profiles, in a
+                separate task, made no appreciable difference.</span></li>
+            <li class=""><span class="grade gr">● Experience</span><span>Across different roles I personally resolved
+                40+ production issues: crashes, ANRs (the app stops responding) and defects found after shipping.</span>
+            </li>
+            <li class=""><span class="grade gr">● Experience</span><span>A field-sales app that works with no
+                connection: local database as the source of truth, batched submission and conflict resolution.</span>
+            </li>
+            <li class=""><span class="grade gv">◆ Verifiable</span><span>Two merged contributions to MockK, one of the
+                most widely used mocking libraries in Kotlin.</span></li>
+            <li class=""><span class="grade gv">◆ Verifiable</span><span>Trenggo application (2017–2018): social media
+                of videos compared side
+                by side with ExoPlayer and YouTube Player, from scratch to Google Play. A public demo video
+                survives.</span></li>
+            <li class=""><span class="grade gr">● Experience</span><span>Listenia (2017–2018): audio with ExoPlayer,
+                MediaSession and notification controls. It predates Android 8; the same thing today would need a
+                foreground service, which I have not implemented.</span></li>
+          </ul>
+        </div>
+        <div class="tracebox" style="margin-top:1rem">
+          <p class="tbh">Order of initialization, before and after</p>
+          <p class="tn2">A schematic of the change, not a capture of a measurement.</p><svg viewBox="0 0 640 176"
+            role="img" aria-labelledby="tt-en" class="trace">
+            <title id="tt-en">Order of initialization, before and after</title>
+            <desc>A schematic of the change, not a capture of a measurement. Parallelization: 33% measured by QA.
+              Baseline Profiles: no appreciable effect.</desc>
+            <g class="grid">
+              <line x1="52" y1="26" x2="52" y2="134" />
+              <line x1="124" y1="26" x2="124" y2="134" />
+              <line x1="196" y1="26" x2="196" y2="134" />
+              <line x1="268" y1="26" x2="268" y2="134" />
+              <line x1="340" y1="26" x2="340" y2="134" />
+              <line x1="412" y1="26" x2="412" y2="134" />
+              <line x1="484" y1="26" x2="484" y2="134" />
+              <line x1="556" y1="26" x2="556" y2="134" />
+            </g><text x="0" y="48" class="rlab">BEFORE</text>
+            <rect x="52" y="32" width="128" height="26" rx="2" class="b1" /><text x="57" y="48.4"
+              class="blab">Application.onCreate</text>
+            <rect x="184" y="32" width="112" height="26" rx="2" class="b1" /><text x="189" y="48.4"
+              class="blab">dependency graph</text>
+            <rect x="300" y="32" width="132" height="26" rx="2" class="b1" /><text x="305" y="48.4"
+              class="blab">analytics, config</text>
+            <rect x="436" y="32" width="112" height="26" rx="2" class="b1" /><text x="441" y="48.4" class="blab">feature
+              init</text>
+            <rect x="552" y="32" width="58" height="26" rx="2" class="b1" /><text x="0" y="104"
+              class="rlab">AFTER</text>
+            <rect x="52" y="90" width="116" height="26" rx="2" class="b2" /><text x="57" y="106.4"
+              class="blab">Application.onCreate</text>
+            <rect x="172" y="90" width="100" height="26" rx="2" class="b2" /><text x="177" y="106.4"
+              class="blab">critical init</text>
+            <rect x="276" y="90" width="40" height="26" rx="2" class="b2" />
+            <rect x="324" y="90" width="88" height="26" rx="2" class="b3" />
+            <rect x="416" y="90" width="84" height="26" rx="2" class="b3" />
+            <rect x="504" y="90" width="80" height="26" rx="2" class="b3" /><text x="324" y="132"
+              class="blab dim">deferred, off the critical path</text>
+            <line x1="318" y1="80" x2="318" y2="122" class="crit" /><text x="52" y="152" class="clab">first draw: before
+              → after</text><text x="52" y="170" class="foot">Parallelization: 33% measured by QA. Baseline Profiles: no
+              appreciable effect.</text>
+          </svg>
+        </div>
+      </section>
+      <section id="en-level">
+        <h2><span><span class="ix">02 </span>Level</span><em>Three external judgments</em></h2>
+        <div class="lvl">
+          <article class="jd">
+            <p class="who">My employer</p>
+            <h3>Formal promotion from mid-level to Senior</h3>
+            <p>A defined process: an interview with the development lead plus a review of several months of documented
+              work. The criterion was delivered work, assessed over time.</p>
+            <p class="when"><span>Approved October 2024 · Senior title January–August 2025</span><span
+                class="grade gr">● Experience</span></p>
+          </article>
+          <article class="jd">
+            <p class="who">The team lead</p>
+            <h3>He handed me the authentication library and components of 4 depending applications</h3>
+            <p>The Android team lead owned them and, before leaving the role, handed the 
+              responsibility to me. He decided who should inherit a component that four production apps 
+              depended on. And also the shared responsibility of owning components of the 4 apps. </p>
+            <p class="when"><span>Sole developer for the auth library for over a year</span><span class="grade gr">● Experience</span></p>
+          </article>
+          <article class="jd">
+            <p class="who">The client</p>
+            <h3>Public recognition from the Product Owner</h3>
+            <p>For reliable delivery, in a monthly recognition meeting, in front of client leads, developers, designers,
+              Product Owners from several areas and QA from both sides.</p>
+            <p class="when"><span>Four applications for the same client · around 2.5 years</span><span
+                class="grade gr">● Experience</span></p>
+          </article>
+        </div>
+      </section>
+      <section id="en-track">
+        <h2><span><span class="ix">03 </span>Track record</span><em>Where each of these happened</em></h2>
+        <ol class="track">
+          <li><span class="org">Apply Digital</span><span class="rl">Software Engineer — Mobile L3 · senior level on
+              their scale</span><span class="wh">Santiago · Jan 2025 – Aug 2025</span></li>
+          <li><span class="org">Reign Design, later Apply Digital</span><span class="rl">Android Developer</span><span
+              class="wh">Santiago · Mar 2020 – Jan 2025</span></li>
+          <li><span class="org">Arkanosoft</span><span class="rl">Mobile Developer</span><span class="wh">Santiago · Oct
+              2018 – Feb 2020</span></li>
+          <li><span class="org">Angular Diseño + Interacción</span><span class="rl">Front-End Mobile
+              Developer</span><span class="wh">Cali, Colombia · May 2017 – Oct 2018</span></li>
+          <li><span class="org">Boken</span><span class="rl">Junior Mobile Front-End Developer</span><span
+              class="wh">Cali, Colombia · Jul 2016 – Aug 2017</span></li>
+          <li><span class="org">Universidad Icesi</span><span class="rl">Education · BA in Interactive Media
+              Design</span><span class="wh">Cali, Colombia · 2011 – 2016</span></li>
+        </ol>
+        <p class="tracknote">Since August 2025 I have not held a full-time job. What I have been doing since is at the
+          foot of the page, under "Right now".</p>
+      </section>
+      <section id="en-work">
+        <h2><span><span class="ix">04 </span>Cases</span><em>Three cases in detail</em></h2>
+        <details class="rec" open>
+          <summary>
+            <h3>One authentication library, four apps depending on it</h3><span class="chev"><span class="cv-o">See the
+                full case</span><span class="cv-c">Hide the detail</span></span><span class="rtag">Sole developer for
+              over a year</span><span class="rmeta"><span>Four Android applications for the same
+                client</span><span>Client under a confidentiality agreement</span></span>
+          </summary>
+          <div class="flds">
+            <div class="fl">Context</div>
+            <div class="fb ">Four production apps shared a single authentication library: sign-in, sign-up with and
+              without social accounts, password recovery, two-step verification by code (SMS or email), and JWT
+              handling, refresh and expiry. Each app consumed its own variant, and the library lived in its own
+              repository with continuous integration.</div>
+            <div class="fl">How I got it</div>
+            <div class="fb ">The Android team lead owned it and, before leaving the role, handed the responsibility to
+              me. For over a year I was its <b>sole developer</b>: maintenance, new features, redesigns, and the work of
+              integrating it into every app that needed the changes.</div>
+            <div class="fl">Constraint</div>
+            <div class="fb ">Any change there reached <b>four production apps at once</b>. The cost of getting it wrong
+              wasn't a broken screen: it was nobody being able to log in.</div>
+            <div class="fl">What I found</div>
+            <div class="fb ">End-to-end tests existed, but they hadn't been updated in months — in some cases years —
+              and they were failing. The failures had been normalized: builds were produced that tolerated them, though
+              they didn't tolerate unit test failures, because other priorities had been agreed with the team. It was
+              known, outstanding technical debt. In practice <b>they no longer said anything about whether
+                authentication worked</b>.</div>
+            <div class="fl">What I did</div>
+            <div class="fb ">
+              <ul class="ops">
+                <li class="add"><span class="op">+</span><span class="tx">Rebuilt the end-to-end tests practically from
+                    scratch, covering the error paths too, and left them running correctly. Coverage was measured with
+                    JaCoCo.</span></li>
+                <li class="mod"><span class="op">~</span><span class="tx">Maintained and evolved the variants each app
+                    consumed, with content configuration in Contentful.</span></li>
+                <li class="mod"><span class="op">~</span><span class="tx">Migrated artifact publishing to a new version
+                    of JFrog, and updated several dependencies along with the Kotlin and Android versions.</span></li>
+                <li class="add"><span class="op">+</span><span class="tx">Work on OAuth and JWT: client-side token
+                    handling, refresh and expiry, obfuscation, and event logging without sensitive data.</span></li>
+                <li class="mod"><span class="op">~</span><span class="tx">Migrated parts of the production UI from Views
+                    to Compose in these apps, while implementing screen, feature and design changes.</span></li>
+                <li class="mod"><span class="op">~</span><span class="tx">Coordinated authentication and navigation
+                    changes across three teams, to unblock releases and align the modules that depended on them.</span>
+                </li>
+                <li class="add"><span class="op">+</span><span class="tx">More than ten business-critical changes across
+                    authentication and core modules, plus validation flows that stopped QA being blocked when the server
+                    had no data.</span></li>
+              </ul>
+            </div>
+            <div class="fl">Outcome</div>
+            <div class="fb ">Authentication got a real safety net back: a change to the library could be verified before
+              it was merged, instead of surfacing after a release. <span class="grade gr">● Experience</span></div>
+            <div class="fl">Limit</div>
+            <div class="fb lim"><span class="grade gl">○</span> The repository had continuous integration, but <b>I
+                don't remember whether the suite ended up as a gate that blocked releases, so I don't claim it</b>: what
+              I do stand behind is that I rebuilt them and left them running correctly. I'm not a security specialist —
+              this is release confidence and functional correctness in an auth flow, not threat modeling or
+              cryptography. I coordinated across teams; I wasn't their formal lead. The Compose migration went screen by
+              screen and feature by feature, <b>never a whole app</b>.</div>
+          </div>
+        </details>
+        <details class="rec">
+          <summary>
+            <h3>Orders you can't lose, on networks you can't trust</h3><span class="chev"><span class="cv-o">See the
+                full case</span><span class="cv-c">Hide the detail</span></span><span class="rtag">Field sales, several
+              countries</span><span class="rmeta"><span>Around 2 years</span><span>Client under a confidentiality
+                agreement</span></span>
+          </summary>
+          <div class="flds">
+            <div class="fl">Context</div>
+            <div class="fb ">An Android field-sales app used daily by thousands of sellers across several countries,
+              many of them on lower-end phones. They take orders inside stores, often where there is no signal.</div>
+            <div class="fl">Constraint</div>
+            <div class="fb ">The app had to be <b>fully usable with no connection</b>, and no order could be lost or
+              duplicated on reconnect. A lost order is lost money for a real person who has already left the store.
+            </div>
+            <div class="fl">Decision</div>
+            <div class="fb ">Treat the local database <b>as the source of truth, not as a cache</b>. The UI always reads
+              from local and never waits on the network. Sync runs separately and reconciles when it can; working never
+              depends on it.</div>
+            <div class="fl">What I did</div>
+            <div class="fb ">
+              <ul class="ops">
+                <li class="add"><span class="op">+</span><span class="tx">Local database as the source of the data, with
+                    daily sync and more immediate refresh on selected screens.</span></li>
+                <li class="add"><span class="op">+</span><span class="tx">Batched order submission through WorkManager
+                    when a connection was available, with local/remote conflict resolution and graceful
+                    degradation.</span></li>
+                <li class="mod"><span class="op">~</span><span class="tx">Took over the integration with a proprietary
+                    BLE device and improved it: learned the hardware hands-on, added on-device logging, and fixed
+                    connection and transfer failures that only showed up in the field.</span></li>
+                <li class="add"><span class="op">+</span><span class="tx">A Kotlin abstraction layer inside the app, so
+                    features stopped depending on the details of connectivity.</span></li>
+                <li class="mod"><span class="op">~</span><span class="tx">Migrated parts of this codebase from MVP
+                    toward MVVM while delivering feature and maintenance work.</span></li>
+                <li class="add"><span class="op">+</span><span class="tx">Coordination with the client and with the
+                    device's original developer, in another country.</span></li>
+              </ul>
+            </div>
+            <div class="fl">Outcome</div>
+            <div class="fb ">Sellers kept working where they used to get stuck, and the team stopped debugging
+              connectivity inside business logic. <span class="grade gr">● Experience</span></div>
+            <div class="fl">Limit</div>
+            <div class="fb lim"><span class="grade gl">○</span> I didn't build the BLE stack from scratch: I took over
+              an integration and improved it. No peripheral role, no GATT server. The service layer and the daily data
+              consolidation ran server-side — I consumed them, I didn't write them. No CRDTs. <b>The MVP to MVVM
+                migration was partial and done along the way</b>, not a migration project with its own scope.</div>
+          </div>
+        </details>
+        <details class="rec">
+          <summary>
+            <h3>Startup time: three tasks, three different results</h3><span class="chev"><span class="cv-o">See the
+                full case</span><span class="cv-c">Hide the detail</span></span><span class="rtag">And the most
+              recommended one was the one that didn't work</span><span class="rmeta"><span>Android and iOS, in
+                parallel</span><span>Measured by QA</span></span>
+          </summary>
+          <div class="flds">
+            <div class="fl">Context</div>
+            <div class="fb ">A client product lead raised the problem: the app took too long to open, and it gets opened
+              dozens of times in a working day. An iOS developer and I took it on together, to tackle the same thing on
+              both platforms.</div>
+            <div class="fl">Decision</div>
+            <div class="fb ">Look at <b>the order of initialization</b> first, before the tooling. Before adding
+              anything, find out what was being loaded at startup that wasn't needed yet.</div>
+            <div class="fl">What I did</div>
+            <div class="fb ">
+              <ul class="ops">
+                <li class="mod"><span class="op">~</span><span class="tx"><b>First task.</b> I parallelized the
+                    initialization that allowed it. QA measured <b>a 33% improvement</b> in startup time.</span></li>
+                <li class="mod"><span class="op">~</span><span class="tx"><b>Second task, separate.</b> We added
+                    deferral of non-critical calls. Combining both techniques, <b>the iOS side reported 50%</b>.</span>
+                </li>
+                <li class="mod"><span class="op">~</span><span class="tx"><b>Third task, separate.</b> I tried Baseline
+                    Profiles, measuring with Macrobenchmark, on the same startup. <b>No appreciable effect.</b> I kept
+                    what did work and dropped the assumption.</span></li>
+              </ul>
+            </div>
+            <div class="fl">Why I tell it this way</div>
+            <div class="fb ">Because they were three separate tasks with three different results, and the one that
+              looked most like "what you're supposed to do" was the one that didn't help. Separating them is the useful
+              part; merging them into a single number would look better and be less true.</div>
+            <div class="fl">Beyond this task</div>
+            <div class="fb ">Across different roles I personally resolved <b>40+ production issues</b>: crashes, ANRs
+              (the app stops responding) and defects found after shipping.</div>
+            <div class="fl">Limit</div>
+            <div class="fb lim"><span class="grade gl">○</span> The 33% is QA's measurement on Android and it came from
+              parallelization. <b>The 50% is what the iOS side reported</b> when combining both techniques: I don't
+              present it as mine or as an Android figure. Baseline Profiles produced neither gain. The work was shared
+              with an iOS developer with more history on that project. I don't present myself as a performance
+              specialist.</div>
+          </div>
+        </details>
+      </section>
+      <section id="en-code">
+        <h2><span><span class="ix">05 </span>Code you can read</span><em>Verifiable</em></h2>
+        <div class="items">
+          <div class="item v">
+            <h3>MockK · PR #1508 — <code>SameInstanceMatcher</code></h3>
+            <p class="sub"><span class="grade gv">◆ Verifiable</span><span>Merged 15 February 2026</span><span>Closes
+                issue #1501</span></p>
+            <p>I fixed a false failure. Verifying a constructor call with a mocked argument made MockK invoke methods on
+              that object while recording, so the call count changed between runs. I added a matcher that compares by
+              reference, so nothing is invoked during recording. With tests and a README example.</p>
+            <p class="sub"><a href="https://github.com/mockk/mockk/pull/1508" target="_blank"
+                rel="noopener noreferrer">Open the change →</a></p>
+          </div>
+          <div class="item v">
+            <h3>MockK · PR #1513 — scoped <code>confirmVerified</code></h3>
+            <p class="sub"><span class="grade gv">◆ Verifiable</span><span>Merged 4 March 2026</span></p>
+            <p><code>mockkStatic</code> accepts function references, but <code>confirmVerified</code> didn't. I added
+              JVM overloads for <code>KFunction</code> and <code>KProperty</code>, so verification can be scoped to a
+              single statically mocked callable, and <code>clear = true</code> clears only its history and leaves the
+              others alone. With JVM tests and documentation.</p>
+            <p class="lim">○ Two merged contributions. I'm not a MockK maintainer.</p>
+            <p class="sub"><a href="https://github.com/mockk/mockk/pull/1513" target="_blank"
+                rel="noopener noreferrer">Open the change →</a></p>
+          </div>
+          <div class="item v">
+            <h3>openBooks — Kotlin Multiplatform and Compose Multiplatform</h3>
+            <p class="sub"><span class="grade gv">◆ Verifiable</span><span>June 2026</span><span>Public
+                repository</span></p>
+            <p><b>It started as a three-day technical assessment and I keep it public as a working sample.</b> The
+              architecture and main logic live in <code>commonMain</code>: Clean Architecture and MVVM, Ktor,
+              kotlinx.serialization, Room KMP, Koin, Navigation3, Material 3 Adaptive, Coil 3, coroutines and StateFlow,
+              shared tests, and CI on GitHub Actions with detekt, ktlint, Kover, dependency review and secret scanning.
+            </p>
+            <p class="lim">○ The Android target is the only one wired for release. There's no production release to iOS
+              or web, no deep Swift interop, and this is not a large-scale migration.</p>
+            <p class="sub"><a href="https://github.com/DOssaA/openBooks" target="_blank" rel="noopener noreferrer">Open
+                the repository →</a></p>
+          </div>
+        </div>
+      </section>
+      <section id="en-hist">
+        <h2><span><span class="ix">06 </span>Earlier</span><em>Background context</em></h2>
+        <div class="items">
+          <div class="item v">
+            <h3>Trenggo — video battles, from nothing to Google Play</h3>
+            <p class="sub"><span class="grade gv">◆ Verifiable</span><span>2017–2018 · Angular Diseño +
+                Interacción</span></p>
+            <p>Co-developed with another Android developer, from scratch through to release. Users uploaded videos and
+              compared two of them side by side with <b>ExoPlayer and YouTube Player</b>: animations, fullscreen,
+              navigation between videos, volume, progress, voting, battle listings and a profile.</p>
+            <p class="lim">○ This is 2017–2018, on ExoPlayer before Media3. Between this app and Listenia it adds up to
+              roughly six months of ExoPlayer work in production, and I offer it as practical grounding in media
+              playback, not as current experience with today's API. The startup no longer operates: what survives is the
+              demo video.</p>
+            <p class="sub"><a href="https://www.youtube.com/watch?v=9ntokJlQvyQ" target="_blank"
+                rel="noopener noreferrer">Watch the demo →</a></p>
+          </div>
+          <div class="item">
+            <h3>Five native Swift applications through App Store review</h3>
+            <p class="sub"><span class="grade gr">● Experience</span><span>2016–2018</span></p>
+            <p>Signing, submission and working through the reviewer's notes until approval. Two at Boken and three at
+              Angular Diseño + Interacción.</p>
+            <p class="lim">○ This is historical. It shows the release process and dealing with the reviewer, not current
+              App Store Connect practice or senior-level iOS experience.</p>
+          </div>
+          <div class="item">
+            <h3>Listenia — Android podcast app</h3>
+            <p class="sub"><span class="grade gr">● Experience</span><span>~2017–2018 · published on Google Play at the
+                time</span></p>
+            <p>Built by two of us and published on Google Play. Java and MVP, audio with ExoPlayer, <b>MediaSession and
+                MediaController</b>, callbacks and player state handling, background playback and media controls in the
+              notification.</p>
+            <p class="lim">○ This is 2017–2018, before Android 8's background execution limits: doing the same today
+              would need a foreground service, which I have not implemented. Built by two of us, never monetized, no
+              active users, and I don't claim it's still published. Nor is it current Media3 experience.</p>
+          </div>
+        </div>
+      </section>
+      <section id="en-stack">
+        <h2><span><span class="ix">07 </span>Stack, by real depth</span></h2>
+        <div class="tiers">
+          <div class="t-deep">
+            <p class="tn">Deep<em>— daily work, defensible all the way down</em></p>
+            <div class="tc"><span>Kotlin</span><span>Android SDK</span><span>Jetpack Compose</span><span>Views–Compose
+                interop</span><span>Coroutines</span><span>Flow /
+                StateFlow</span><span>ViewModel</span><span>MVVM</span><span>Clean Architecture</span><span>Retrofit /
+                OkHttp</span><span>Room / SQLite</span><span>WorkManager</span><span>DataStore</span><span>Hilt / Dagger
+                /
+                Koin</span><span>JUnit</span><span>MockK</span><span>Mockito</span><span>Espresso</span><span>JaCoCo</span><span>Crashlytics</span><span>Play
+                Console</span><span>Android Vitals</span><span>R8 / ProGuard</span><span>OAuth and JWT</span><span>Push
+                notifications</span><span>Camera2 / CameraX</span></div>
+          </div>
+          <div class="t-mid">
+            <p class="tn">Working<em>— delivered, with bounded scope</em></p>
+            <div class="tc"><span>Kotlin Multiplatform</span><span>Compose
+                Multiplatform</span><span>Ktor</span><span>kotlinx.serialization</span><span>Room
+                KMP</span><span>Turbine</span><span>Kotest</span><span>Mokkery</span><span>BLE central
+                role</span><span>React Native and Expo</span><span>TypeScript</span><span>GitHub
+                Actions</span><span>Bitrise</span><span>JFrog</span><span>Contentful</span><span>Macrobenchmark</span><span>GitFlow
+                and trunk-based</span><span>Product flavors</span><span>Firebase Analytics</span><span>Play Integrity
+                (release hardening)</span><span>Obfuscation and safe logging</span>
+                <span>Pre-Media3 ExoPlayer (2017–18)</span><span>MediaSession and
+                MediaController</span><span>YouTube Player</span><span>RxJava</span><span>Swift and App Store submission
+                (for about a year)</span><span>Java</span><span>Xamarin.Forms</span><span>.NET Core REST
+                (CRUD)</span><span>Unity</span><span>Azure DevOps / App Center</span><span>GraphQL
+                (limited)</span><span>Dynatrace (brief exposure)</span><span>Baseline Profiles (measured and dropped in
+                that case)</span></div>
+          </div>
+          <div class="t-none">
+            <p class="tn">No experience<em>— so neither of us wastes the other's time</em></p>
+            <div class="tc"><span>Foreground services</span><span>Kiosk, Device Owner or device
+                management</span><span>BLE peripheral role or GATT server</span><span>KMP release on iOS or
+                web</span><span>Node or NestJS backend</span><span>Media3 (no experience)</span></div>
+          </div>
+        </div>
+      </section>
+      <section id="en-how">
+        <h2><span><span class="ix">08 </span>How I work</span></h2>
+        <div class="prose">
+          <p><b>Ownership through production, not through merge.</b> What I enjoy most is understanding a problem well
+            enough to solve the real need, and then carrying it through architecture, implementation, testing and how it
+            behaves in production. A closed ticket that solves nothing is no use to me.</p>
+          <p><b>Async and in writing.</b> One of my hardest coordination work has been aligning authentication and navigation
+            changes across three teams, and also getting a device integration over the line with its original developer in
+            another country. Both worked because of the communication, alignment and the decisions were written down. I have
+            worked remotely with teams spread across several time zones effectively.</p>
+          <p><b>What I need from a team.</b> Enough product context to solve the real need, not only what the ticket
+            says. In client work, what matters to me is that they reach the outcome they were actually after, which
+            isn't always what they asked for.</p>
+          <p><b>AI tools.</b> I use them to explore code, speed up implementation, debug, draft tests and do small
+            refactors. I review what they produce; the technical decision stays mine.</p>
+        </div>
+      </section>
+      <section id="en-contact">
+        <h2><span><span class="ix">09 </span>Contact</span></h2>
+        <div class="contact">
+          <h3>Let's talk</h3>
+          <p>Available for Senior Android roles, full-time or contract, remote. If the role has a migration waiting, an
+            inherited codebase, or a production problem nobody can reproduce, that's exactly where I'm most useful.</p>
+          <div class="acts" style="margin:1.3rem 0 0"><a class="btn p"
+              href="mailto:dario.ossa.a@gmail.com">dario.ossa.a@gmail.com</a><a class="btn"
+              href="https://www.linkedin.com/in/darioossa/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a
+              class="btn" href="https://github.com/DOssaA" target="_blank" rel="noopener noreferrer">GitHub</a><a
+              class="btn" href="./dario-ossa-cv.pdf">CV (PDF)</a></div>
+          <p class="tz">Santiago, Chile · UTC−3 in the southern summer, UTC−4 in winter · between 0 and 2 hours from US
+            Eastern, and my working day overlaps theirs end to end. Against Spain the gap runs from 4 to 6 hours
+            depending on the time of year: starting at 08:00 in Chile puts me between 12:00 and 14:00 in Spain, so my
+            morning covers the whole Spanish afternoon.</p>
+        </div>
+        <div class="prose" style="margin-top:2.2rem">
+          <p class="kicker">Right now</p>
+          <ul class="plain">
+            <li><span class="k">Since September 2026</span><span>Working by the hour as a tester at Test IO: functional
+                and exploratory testing, reproducing defects, and writing them up with steps, environment and evidence.
+                I hold three Test IO certifications and three from Tester Work, plus a cybersecurity course badge. That
+                work sharpened how I write bug reports, and that shows in how I hand work to QA.</span></li>
+            <li><span class="k">Training</span><span>AI Expert, from DevExpert.io — certificate
+                <code>6940210012c0917a60020cdb</code>. Plus studying Kotlin and JVM runtime fundamentals, and system
+                design.</span></li>
+            <li><span class="k">Since May 2026</span><span>Volunteering with the Chilean Red Cross, around 15 to 20
+                hours a month, after their basic first aid certification and institutional doctrine course.</span></li>
+          </ul>
+        </div>
+      </section>
+      <footer><span>Updated 30 September 2026</span><span>A single-file static page, written by hand. No tracking, no
+          cookies.</span></footer>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var root = document.documentElement, KEY = "do-lang", TKEY = "do-theme";
+      function get(k) { try { return localStorage.getItem(k) } catch (e) { return null } }
+      function set(k, v) { try { localStorage.setItem(k, v) } catch (e) { } }
+      var q = new URLSearchParams(location.search).get("lang");
+      var nav = (navigator.language || "en").slice(0, 2).toLowerCase();
+      var lang = (q === "en" || q === "es") ? q : (get(KEY) || (nav === "es" ? "es" : "en"));
+      function applyLang(l) {
+        lang = l; root.lang = l; set(KEY, l); root.setAttribute("data-boot", l);
+        document.getElementById("pane-es").hidden = (l !== "es");
+        document.getElementById("pane-en").hidden = (l !== "en");
+        var b = document.querySelectorAll("[data-langbtn]");
+        for (var i = 0; i < b.length; i++) { b[i].setAttribute("aria-label", l === "es" ? "Read in English" : "Leer en español"); }
+      }
+      applyLang(lang);
+      document.addEventListener("click", function (e) {
+        var t = e.target.closest("[data-langbtn]"); if (!t) return;
+        e.preventDefault(); applyLang(lang === "es" ? "en" : "es"); window.scrollTo(0, 0);
+      });
+      var th = get(TKEY); if (th) { root.setAttribute("data-theme", th); }
+      (function () {
+        var d = root.getAttribute("data-theme") ||
+          (window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        var b = document.querySelectorAll("[data-themebtn]");
+        for (var i = 0; i < b.length; i++) { b[i].setAttribute("aria-pressed", d === "dark" ? "true" : "false"); }
+      })();
+      document.addEventListener("click", function (e) {
+        var t = e.target.closest("[data-themebtn]"); if (!t) return; e.preventDefault();
+        var cur = root.getAttribute("data-theme");
+        if (!cur) { cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+        var nx = cur === "dark" ? "light" : "dark"; root.setAttribute("data-theme", nx); set(TKEY, nx);
+        t.setAttribute("aria-pressed", nx === "dark" ? "true" : "false");
+        var es = root.lang === "es"; t.setAttribute("aria-label", (es ? "Tema: " : "Theme: ") + (nx === "dark" ? (es ? "oscuro" : "dark") : (es ? "claro" : "light")));
+      });
+      document.addEventListener("click", function (e) {
+        var t = e.target.closest("[data-copy]"); if (!t) return; e.preventDefault();
+        var m = t.getAttribute("data-copy"), old = t.getAttribute("data-label-idle");
+        var done = function () { t.textContent = t.getAttribute("data-label-done"); setTimeout(function () { t.textContent = old; }, 1600); };
+        if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(m).then(done, done); } else { done(); }
+      });
+      function allOpen(v) {
+        var d = document.querySelectorAll("details.rec");
+        for (var i = 0; i < d.length; i++) {
+          if (v) { if (!d[i].open) { d[i].open = true; d[i].dataset.wasShut = "1"; } }
+          else if (d[i].dataset.wasShut) { d[i].open = false; delete d[i].dataset.wasShut; }
+        }
+      }
+      if (window.matchMedia) {
+        var mq = window.matchMedia("print");
+        if (mq.addEventListener) { mq.addEventListener("change", function (e) { allOpen(e.matches) }); }
+      }
+      window.addEventListener("beforeprint", function () { allOpen(true) });
+      window.addEventListener("afterprint", function () { allOpen(false) });
+
+      if ("IntersectionObserver" in window) {
+        var obs = new IntersectionObserver(function (en) {
+          en.forEach(function (x) {
+            if (!x.isIntersecting) return;
+            var links = document.querySelectorAll("#pane-" + x.target.id.slice(0, 2) + " .nav a");
+            for (var i = 0; i < links.length; i++) {
+              if (links[i].getAttribute("href") === "#" + x.target.id) { links[i].setAttribute("aria-current", "true"); }
+              else { links[i].removeAttribute("aria-current"); }
+            }
+          });
+        }, { rootMargin: "-12% 0px -72% 0px" });
+        var ss = document.querySelectorAll("section[id]");
+        for (var i = 0; i < ss.length; i++) { obs.observe(ss[i]); }
+      }
+    })();
+  </script>
+</body></html>
